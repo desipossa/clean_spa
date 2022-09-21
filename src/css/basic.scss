@@ -1,0 +1,64 @@
+$main-color: #032777;
+$color-gray : #dddddd;
+$font-small : 13px;
+$font-midume : 17px;
+$font-big : 20px;
+
+
+.inner {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+
+.Header {
+    .top__bar {
+        border-bottom: 1px solid $color-gray;
+        font-size: $font-small;
+        font-weight: 500;
+
+        .inner {
+            justify-content: flex-end;
+            line-height: 30px;
+
+            li {
+                border-right: 1px solid $color-gray;
+                padding: 0 10px;
+            }
+        }
+    }
+
+    .inner {
+        display: flex;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+            gap: 50px;
+            line-height: 90px;
+            font-size: $font-big;
+            font-weight: 500;
+        }
+
+        a {
+            position: relative;
+            display: block;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                transform: translateX(-50%);
+                background: $main-color;
+            }
+
+            &.active::after {
+                width: 100%;
+                transition: 0.3s;
+            }
+        }
+    }
+}
