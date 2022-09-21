@@ -4,6 +4,13 @@ $font-small : 13px;
 $font-midume : 17px;
 $font-big : 20px;
 
+body {
+    overflow-x: hidden;
+}
+
+.Wrapper {
+    min-width: 1170px;
+}
 
 .inner {
     width: 1170px;

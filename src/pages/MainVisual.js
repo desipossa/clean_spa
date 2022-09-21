@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from "swiper";
 import 'swiper/css';
 import styled from 'styled-components';
+import '../css/Main.scss';
+
 
 
 const MAINSLIDRE = [
@@ -11,27 +14,87 @@ const MAINSLIDRE = [
 ];
 
 
-
 const SlideItm = styled.div`
-    background: #f00;
+    .tit {
+        font-size: 80px;
+        font-weight: 800;
+        margin: 0 0 30px 0;
+        text-shadow:1px 0 3px rgba(255,255,255,0.25); 
+        background: linear-gradient(to right top, #0a96ba, #032777, #333333);
+        color: transparent;
+        -webkit-background-clip: text;}
+    }
+    .con {
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0 0 20px 0;
+        color: tomato;
+    }
+    .des {
+        font-size: 15px;
+        word-break: keep-all;
+        line-height: 1.45;
+    }
+`
+
+const Dots = styled.ul`
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin: 0 0 0 -585px;
+    li {
+        width: 20px;
+        height: 20px;
+        background: #ddd;
+
+        &.on {
+            background: tomato;
+        }
+    }
 `
 
 const MainVisual = () => {
+    const [idxn, setIdxn] = useState();
+    const MS = useRef(null)
     return (
         <section className='MainVisual'>
-            <Swiper>
+            <Swiper className='MainSlide'
+                direction={"vertical"}
+                loop={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
+                modules={[Autoplay, Pagination, Navigation]}
+                onSlideChange={it => setIdxn(it.realIndex)}
+                ref={MS}
+            >
                 {
                     MAINSLIDRE.map((sl, idx) => {
                         return (
                             <SwiperSlide>
                                 <SlideItm>
-                                    {sl.tit}
+                                    <div className='tit'>{sl.tit}</div>
+                                    <div className='con'>{sl.con}</div>
+                                    <div className='des'>{sl.des}</div>
                                 </SlideItm>
                             </SwiperSlide>
                         )
                     })
                 }
             </Swiper>
+            <Dots className="dots">
+                {
+                    MAINSLIDRE.map((dot, idx) => {
+                        return (
+                            <li className={idxn === idx && 'on'} onClick={() => { MS.current.swiper.slideTo(idx) }}></li>
+                        )
+                    })
+                }
+            </Dots>
+            <div>{idxn}</div>
         </section>
     )
 }
