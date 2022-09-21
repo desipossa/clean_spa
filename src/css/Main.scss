@@ -13,4 +13,14 @@
         margin: 0 0 0 -585px;
     }
 
+    .boom {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 600px;
+        height: 300px;
+        transform: translate(0, -200px);
+        margin: 0 0 0 0;
+    }
+
 }

@@ -55,6 +55,31 @@ const Dots = styled.ul`
     }
 `
 
+const Arrows = styled.div`
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin: 0 0 0 0;
+    i {
+        font-size: 30px;
+        color: #fff;
+        background: rgba(0,0,0,0.25);
+        padding: 15px;
+        border-radius: 50%;
+    }
+`
+const SlideNum = styled.div`
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    margin: 0 0 0 -585px;
+    font-size: 30px;
+    font-weight: 700;
+    span {
+        font-size: 15px;
+    }
+`
+
 const MainVisual = () => {
     const [idxn, setIdxn] = useState();
     const MS = useRef(null)
@@ -89,12 +114,21 @@ const MainVisual = () => {
                 {
                     MAINSLIDRE.map((dot, idx) => {
                         return (
-                            <li className={idxn === idx && 'on'} onClick={() => { MS.current.swiper.slideTo(idx) }}></li>
+                            <li className={idxn === idx && 'on'} onClick={() => { MS.current.swiper.slideTo(idx + 1) }}></li>
                         )
                     })
                 }
             </Dots>
-            <div>{idxn}</div>
+            <div className="boom">
+                <img src={process.env.PUBLIC_URL + '/assets/images/slogan.png'} alt="" />
+            </div>
+            <Arrows>
+                <i className='xi-arrow-right' onClick={() => MS.current.swiper.slideNext()}></i>
+            </Arrows>
+            <SlideNum>
+                0{idxn + 1} / <span>0{MAINSLIDRE.length}</span>
+            </SlideNum>
+
         </section>
     )
 }
