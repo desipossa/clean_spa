@@ -3,11 +3,11 @@ import MainVisual from './MainVisual';
 import MainContent from './MainContent';
 import Customer from './Customer';
 
-const Main = () => {
+const Main = ({ user }) => {
     return (
         <main className='Main'>
             <MainVisual />
-            <MainContent />
+            <MainContent user={user} />
             <Customer />
         </main>
     )
