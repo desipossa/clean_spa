@@ -99,7 +99,7 @@ const MainVisual = () => {
                 {
                     MAINSLIDRE.map((sl, idx) => {
                         return (
-                            <SwiperSlide>
+                            <SwiperSlide key={idx}>
                                 <SlideItm>
                                     <div className='tit'>{sl.tit}</div>
                                     <div className='con'>{sl.con}</div>
@@ -114,7 +114,7 @@ const MainVisual = () => {
                 {
                     MAINSLIDRE.map((dot, idx) => {
                         return (
-                            <li className={idxn === idx && 'on'} onClick={() => { MS.current.swiper.slideTo(idx + 1) }}></li>
+                            <li className={idxn === idx ? 'on' : ''} onClick={() => { MS.current.swiper.slideTo(idx + 1) }} key={idx}></li>
                         )
                     })
                 }
