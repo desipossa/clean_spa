@@ -11,6 +11,7 @@
         height: 300px;
         transform: translate(0, -50%);
         margin: 0 0 0 -585px;
+        white-space: pre-wrap;
     }
 
     .boom {
@@ -23,4 +24,150 @@
         margin: 0 0 0 0;
     }
 
+    .main__link {
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        display: flex;
+        transform: translateX(-50%);
+        background: #f00;
+
+
+        li {
+            flex: 1;
+
+            &:last-child {
+                flex: 2;
+            }
+
+            &>a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 200px;
+            }
+
+            .case {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                width: 100px;
+                height: 130px;
+                color: #fff;
+                background-image: url(../../public/assets/images/icon_set_w.png);
+                background-repeat: no-repeat;
+            }
+        }
+
+        $bg-color : #da544b,
+        #f4cb4f,
+        #337689,
+        #6fa476,
+        #f4f4f4;
+
+        @for $i from 1 to 5 {
+            li:nth-child(#{$i}) .case {
+                background-position-x: ($i - 1) * -100px;
+            }
+        }
+
+        @each $bg in $bg-color {
+            //index 값을 구하기
+            $idx: index($bg-color, $bg);
+
+            li:nth-child(#{$idx}) {
+                background-color: $bg;
+            }
+        }
+
+    }
+
+    .customer {
+        $color : #337689;
+        position: relative;
+        padding: 50px 30px 0 0;
+        text-align: right;
+
+        strong {
+            display: block;
+            font-size: 40px;
+            font-weight: 600;
+            margin: 0 0 15px 0;
+            color: $color;
+        }
+
+        p {
+            line-height: 1.45;
+        }
+
+        i {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            background: $color;
+            color: #fff;
+            font-size: 40px;
+            padding: 10px;
+            border-radius: 50%;
+        }
+    }
+
+}
+
+.MainContent {
+    padding: 150px 0 100px 0;
+    background: linear-gradient(to top, #f4f4f4 50%, transparent 50%);
+
+    .inner {
+        display: flex;
+        gap: 30px;
+
+        &>* {
+            flex: 1;
+        }
+
+        figure {
+            margin: 0 0 30px 0;
+            border-radius: 50px 0;
+            overflow: hidden;
+        }
+
+        strong {
+            position: relative;
+            display: block;
+            font-size: 25px;
+            margin: 0 0 30px 0;
+
+            &::before {
+                content: "MORE";
+                position: absolute;
+                top: -50px;
+                right: 30px;
+                background: rgba(244, 203, 79, 0.5);
+                color: #fff;
+                border-radius: 50%;
+                font-size: 12px;
+                font-weight: 700;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                line-height: 50px;
+            }
+
+            &::after {
+                content: "";
+                display: block;
+                width: 60px;
+                height: 1px;
+                background: #da544b;
+                margin: 15px 0;
+            }
+        }
+
+        p {
+            font-size: 13px;
+            font-weight: 500;
+        }
+    }
 }
