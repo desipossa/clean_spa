@@ -1,16 +1,11 @@
-
 import { Link, Route, Routes } from 'react-router-dom';
-
 const MainContent = ({ user }) => {
-
     return (
-
-        <div>
-
+        <div className='inner'>
             {
                 !user
                     ? "로딩중입니다. ... "
-                    : <ul>
+                    : <ul style={{ display: 'flex' }}>
                         {
                             user.map(u => {
                                 return (
@@ -26,8 +21,6 @@ const MainContent = ({ user }) => {
                         }
                     </ul>
             }
-
-
         </div>
     )
 }

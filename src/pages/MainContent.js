@@ -8,7 +8,7 @@ const MainContent = ({ word }) => {
                 {
                     word.map((con, idx) => {
                         return (
-                            <Link to={con.link}>
+                            <Link to={con.link} key={idx}>
                                 <figure key={con.id}>
                                     <img src={process.env.PUBLIC_URL + `/assets/images/main_s01${idx + 1}.jpg`} alt="" />
                                 </figure>
