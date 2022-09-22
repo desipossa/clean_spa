@@ -17,9 +17,9 @@ import './css/basic.scss';
 
 
 
+const url = 'http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline'
 const App = () => {
-  const url = 'https://api.github.com/users'
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState();
   const getData = async () => {
     const res = await axios.get(url);
     setUser(res.data);
@@ -33,6 +33,7 @@ const App = () => {
       {console.log(user)}
       <Routes>
         <Route path='/' element={<MainContentData user={user} />} />
+        <Route path='/sub04' element={<Sub04 user={user} />} />
         <Route path='/detail/:id' element={<Detail user={user} />} />
       </Routes>
       <Footer />
