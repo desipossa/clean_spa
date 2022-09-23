@@ -1,36 +1,18 @@
-import { Link, Route, Routes } from 'react-router-dom';
-import styled from 'styled-components';
-const Sub04 = ({ user }) => {
-
+import Article from './Article';
+import Aside from './Aside';
+import '../css/Subpage.scss'
+const Sub04 = ({ content }) => {
+    const num = 3;
     return (
-        <div className='inner'>
-            {
-                !user
-                    ? <h1>"로딩중입니다. ... "</h1>
-                    : <ul>
-                        {
-                            user.map(u => {
-                                return (
-                                    <li key={u.id}>
-                                        <Link to={'/detail/' + u.id}>
-                                            <img src={u.image_link} alt="" />
-                                            <div className="name">
-                                                {u.name}
-                                            </div>
-                                            <div className="price">
-                                                {u.price}
-                                            </div>
-
-                                        </Link>
-
-                                    </li>
-                                )
-                            })
-                        }
-                    </ul>
-            }
+        <div className='Subpage'>
+            <div className="nav__bar">
+                <div className="inner">{content[num].tit} / {content[0].tit}</div>
+            </div>
+            <div className="inner sub">
+                <Article content={content} num={num} />
+                <Aside />
+            </div>
         </div>
     )
 }
-
 export default Sub04;
